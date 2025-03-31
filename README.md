@@ -89,7 +89,7 @@ graph TD
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/mobile-automation.git
+   git clone https://github.com/yogeshwankhede007/mobile-automation-framework-cursor-ai.git
    cd mobile-automation
    ```
 
