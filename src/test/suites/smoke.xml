@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="smoke" parallel="methods" thread-count="3">
+    <listeners>
+        <listener class-name="com.mobileautomation.test.TestGroupManager"/>
+    </listeners>
+    
+    <test name="Smoke Tests">
+        <groups>
+            <define name="smoke">
+                <include name="login"/>
+                <include name="home"/>
+            </define>
+        </groups>
+        
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+            <class name="com.mobileautomation.tests.HomeTest"/>
+        </classes>
+    </test>
+</suite> 

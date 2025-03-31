@@ -1,0 +1,110 @@
+version: 2.1
+
+orbs:
+  maven: circleci/maven@1.3
+  slack: circleci/slack@4.12.3
+
+jobs:
+  test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Create required directories
+          command: |
+            mkdir -p apps
+            mkdir -p run_reports
+      - maven/with-cache:
+          maven-command: |
+            mvn clean verify
+            mvn jacoco:report
+            mvn sonar:sonar \
+              -Dsonar.host.url=https://sonarcloud.io \
+              -Dsonar.organization=your-org \
+              -Dsonar.login=${SONAR_TOKEN}
+      - store_artifacts:
+          path: target/site/jacoco
+          destination: coverage
+      - store_artifacts:
+          path: run_reports
+          destination: reports
+      - store_artifacts:
+          path: apps
+          destination: apps
+      - slack/notify:
+          event: always
+          template: test_results_template
+          channel: test-results
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Test Execution Results"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Total Tests:*\n${CIRCLE_BUILD_NUM}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:*\n${CIRCLE_JOB}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Test Report:*\n${CIRCLE_BUILD_URL}/artifacts/0/reports/index.html"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Coverage Report:*\n${CIRCLE_BUILD_URL}/artifacts/0/coverage/index.html"
+                  }
+                }
+              ]
+            }
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test
+    triggers:
+      schedule:
+        cron: "0 7 * * 1"  # Every Monday at 7 AM
+      push:
+        branches:
+          - main
+      pull_request:
+        branches:
+          - main
+
+commands:
+  install-dependencies:
+    description: Install project dependencies
+    steps:
+      - run:
+          name: Install Appium
+          command: |
+            npm install -g appium
+            appium driver install uiautomator2
+            appium driver install xcuitest
+      - run:
+          name: Install Android SDK
+          command: |
+            wget https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip
+            unzip commandlinetools-linux-8092744_latest.zip -d /opt/android
+            yes | /opt/android/cmdline-tools/bin/sdkmanager --licenses
+            /opt/android/cmdline-tools/bin/sdkmanager "platform-tools" "platforms;android-30" 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Mobile Automation Test Suite" parallel="methods" thread-count="4">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+        <listener class-name="org.testng.reporters.JUnitXMLReporter"/>
+        <listener class-name="com.mobileautomation.listeners.TestListener"/>
+        <listener class-name="com.chaintest.framework.listeners.ChainTestListener"/>
+    </listeners>
+
+    <test name="BrowserStack Tests">
+        <parameter name="platform" value="android"/>
+        <parameter name="device" value="Google Pixel 8"/>
+        <parameter name="os_version" value="14.0"/>
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+            <!-- Add more test classes here -->
+        </classes>
+    </test>
+
+    <test name="BrowserStack Tests">
+        <parameter name="platform" value="android"/>
+        <parameter name="device" value="Samsung Galaxy S24"/>
+        <parameter name="os_version" value="14.0"/>
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+            <!-- Add more test classes here -->
+        </classes>
+    </test>
+
+    <test name="BrowserStack Tests">
+        <parameter name="platform" value="ios"/>
+        <parameter name="device" value="iPhone 15 Pro"/>
+        <parameter name="os_version" value="17.0"/>
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+            <!-- Add more test classes here -->
+        </classes>
+    </test>
+
+    <test name="BrowserStack Tests">
+        <parameter name="platform" value="ios"/>
+        <parameter name="device" value="iPhone 15 Pro Max"/>
+        <parameter name="os_version" value="17.0"/>
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+            <!-- Add more test classes here -->
+        </classes>
+    </test>
+</suite> 

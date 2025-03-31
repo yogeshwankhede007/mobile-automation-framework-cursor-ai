@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Mobile Automation Test Suite" parallel="methods" thread-count="1">
+    <listeners>
+        <listener class-name="com.mobileautomation.listeners.ParallelTestListener"/>
+        <listener class-name="com.mobileautomation.listeners.TestListener"/>
+        <listener class-name="com.mobileautomation.listeners.RetryListener"/>
+    </listeners>
+
+    <parameter name="browserstack.enabled" value="false"/>
+    <parameter name="browserstack.username" value="your_username"/>
+    <parameter name="browserstack.accesskey" value="your_access_key"/>
+    <parameter name="android.app.name" value="your_app.apk"/>
+    <parameter name="ios.app.name" value="your_app.app"/>
+    <parameter name="android.device.name" value="Google Pixel 4"/>
+    <parameter name="android.os.version" value="11.0"/>
+    <parameter name="ios.device.name" value="iPhone 12"/>
+    <parameter name="ios.os.version" value="15.0"/>
+    <parameter name="test.timeout" value="30"/>
+    <parameter name="test.retry.count" value="3"/>
+
+    <test name="Login Tests">
+        <groups>
+            <define name="login">
+                <include name="login"/>
+                <include name="smoke"/>
+            </define>
+            <define name="regression">
+                <include name="regression"/>
+            </define>
+        </groups>
+        <classes>
+            <class name="com.mobileautomation.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Home Tests">
+        <groups>
+            <define name="home">
+                <include name="home"/>
+                <include name="smoke"/>
+            </define>
+        </groups>
+        <classes>
+            <class name="com.mobileautomation.tests.HomeTest"/>
+        </classes>
+    </test>
+
+    <test name="Settings Tests">
+        <groups>
+            <define name="settings">
+                <include name="settings"/>
+                <include name="regression"/>
+            </define>
+        </groups>
+        <classes>
+            <class name="com.mobileautomation.tests.SettingsTest"/>
+        </classes>
+    </test>
+</suite> 
