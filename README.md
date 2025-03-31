@@ -9,8 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CircleCI](https://circleci.com/gh/yourusername/mobile-automation.svg?style=svg)](https://circleci.com/gh/yourusername/mobile-automation)
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=your-org-mobile-automation)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=your-org-mobile-automation&metric=coverage)](https://sonarcloud.io/dashboard?id=your-org-mobile-automation)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=your-org-mobile-automation&metric=alert_status)](https://sonarcloud.io/dashboard?id=your-org-mobile-automation)
+
 
 A robust, scalable, and maintainable mobile automation framework built with Java, Appium, and TestNG.
 
