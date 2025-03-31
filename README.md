@@ -289,10 +289,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@example.com or join our Slack channel.
+For support, email yogi.wankhede007@gmail.com.com or join our Slack channel.
 
 ---
 
 <div align="center">
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Yogesh Wankhede](https://github.com/yogeshwankhede007)
 </div> 
