@@ -7,7 +7,6 @@
 [![TestNG](https://img.shields.io/badge/TestNG-7.7.1-orange.svg)](https://testng.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.8.4-green.svg)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![CircleCI](https://circleci.com/gh/yourusername/mobile-automation.svg?style=svg)](https://circleci.com/gh/yourusername/mobile-automation)
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=your-org-mobile-automation)
 
 
